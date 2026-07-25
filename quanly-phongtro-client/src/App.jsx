@@ -69,7 +69,7 @@ export default function App() {
     <div className="app">
       <header>
         <h1>🏠 Quản lý phòng trọ / căn hộ</h1>
-        <p className="subtitle">Phòng, khách thuê, hoá đơn điện nước hằng tháng</p>
+        <p className="subtitle">Phòng, khách thuê, hoá đơn điện nước hằng tháng 1212</p>
       </header>
 
       {error && <div className="alert">{error}</div>}
