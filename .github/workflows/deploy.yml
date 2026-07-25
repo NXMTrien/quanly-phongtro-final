@@ -29,14 +29,18 @@ jobs:
           npm run build
 
       - name: Prepare backend artifact
+        shell: bash
         working-directory: quanly-phongtro-server
         run: |
+          set -e
           npm ci
-          rm -rf dist/backend
+          rm -rf dist
           mkdir -p dist/backend
           cp package.json package-lock.json index.js dist/backend/
           if [ -f .env ]; then cp .env dist/backend/; fi
-          cp -R src uploads node_modules dist/backend/
+          cp -R src uploads dist/backend/
+          test -d dist/backend/src
+          test -d dist/backend/uploads
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
