@@ -32,8 +32,9 @@ jobs:
         working-directory: quanly-phongtro-server
         run: |
           npm ci
-          mkdir -p dist
-          cp -r . dist/backend
+          mkdir -p dist/backend
+          cp -R package.json package-lock.json index.js src uploads dist/backend/
+          if [ -f .env ]; then cp .env dist/backend/; fi
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
